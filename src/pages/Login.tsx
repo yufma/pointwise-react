@@ -15,7 +15,11 @@ import {
 import { Visibility, VisibilityOff, Home as HomeIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
-const Login: React.FC = () => {
+interface LoginProps {
+  onLogin: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -63,7 +67,8 @@ const Login: React.FC = () => {
         email: user.email
       }));
 
-      navigate('/');
+      onLogin();
+      navigate('/'); // 메인 화면으로 이동
     } catch (error) {
       setSnackbar({
         open: true,
@@ -148,14 +153,34 @@ const Login: React.FC = () => {
             >
               로그인
             </Button>
-            <Box sx={{ textAlign: 'center' }}>
-              <Typography variant="body2">
-                계정이 없으신가요?{' '}
-                <Link href="/signup" variant="body2">
-                  회원가입
-                </Link>
-              </Typography>
-            </Box>
+          </Box>
+          <Box sx={{ textAlign: 'center' }}>
+            <Typography variant="body2">
+              계정이 없으신가요?{' '}
+              <Link
+                component="button"
+                variant="body2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/signup');
+                }}
+                sx={{
+                  textDecoration: 'none',
+                  color: '#1976d2',
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  border: 'none',
+                  background: 'none',
+                  padding: 0,
+                  '&:hover': {
+                    color: '#1565c0',
+                    textDecoration: 'underline'
+                  }
+                }}
+              >
+                회원가입
+              </Link>
+            </Typography>
           </Box>
         </Paper>
       </Box>

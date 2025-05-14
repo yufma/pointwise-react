@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import MapVisualization from './components/MapVisualization';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
@@ -82,7 +82,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onLogin={() => {}} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<AppContent />} />
       </Routes>

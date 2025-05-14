@@ -45,7 +45,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/popup_images/스타벅스.png'
+        popupImage: '/pointwise-react/popup_images/스타벅스.png'
       },
       {
         position: [37.4519, 126.6547] as L.LatLngExpression,
@@ -56,7 +56,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/popup_images/육쌈식당.png'
+        popupImage: '/pointwise-react/popup_images/육쌈식당.png'
       },
       {
         position: [37.4519, 126.6548] as L.LatLngExpression,
@@ -67,7 +67,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/popup_images/커리야.png'
+        popupImage: '/pointwise-react/popup_images/커리야.png'
       },
       {
         position: [37.4517, 126.6552] as L.LatLngExpression,
@@ -78,7 +78,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/popup_images/삼청당.png'
+        popupImage: '/pointwise-react/popup_images/삼청당.png'
       }
     ];
 

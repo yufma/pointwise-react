@@ -2,7 +2,7 @@
   "name": "pointwise",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yufma.github.io/pointwise-react",
+  "homepage": "https://yufma.github.io/pointwise-react/",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -34,7 +34,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=3000 && set HOST=localhost && react-scripts start",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
