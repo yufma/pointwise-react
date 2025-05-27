@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/pointwise-react/static/css/main.e34c79ff.css",
-    "main.js": "/pointwise-react/static/js/main.d12f59c7.js",
-    "static/js/453.d71665b1.chunk.js": "/pointwise-react/static/js/453.d71665b1.chunk.js",
+    "main.css": "/pointwise-react/static/css/main.28a92264.css",
+    "main.js": "/pointwise-react/static/js/main.12658ddc.js",
     "static/media/fa-solid-900.ttf": "/pointwise-react/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/fa-brands-400.ttf": "/pointwise-react/static/media/fa-brands-400.1815e00441357e01619e.ttf",
     "static/media/markers-soft@2x.png": "/pointwise-react/static/media/markers-soft@2x.1f2cc17911c8d4a3fa01.png",
@@ -14,12 +13,11 @@
     "static/media/fa-v4compatibility.ttf": "/pointwise-react/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/pointwise-react/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/pointwise-react/index.html",
-    "main.e34c79ff.css.map": "/pointwise-react/static/css/main.e34c79ff.css.map",
-    "main.d12f59c7.js.map": "/pointwise-react/static/js/main.d12f59c7.js.map",
-    "453.d71665b1.chunk.js.map": "/pointwise-react/static/js/453.d71665b1.chunk.js.map"
+    "main.28a92264.css.map": "/pointwise-react/static/css/main.28a92264.css.map",
+    "main.12658ddc.js.map": "/pointwise-react/static/js/main.12658ddc.js.map"
   },
   "entrypoints": [
-    "static/css/main.e34c79ff.css",
-    "static/js/main.d12f59c7.js"
+    "static/css/main.28a92264.css",
+    "static/js/main.12658ddc.js"
   ]
 }
