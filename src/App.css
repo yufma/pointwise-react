@@ -81,7 +81,6 @@
   background: #F8FAFC;
   display: flex;
   flex-direction: column;
-  margin-top: 70px; /* 네비게이션 바 높이만큼 여백 추가 */
 }
 
 /* 상단 바 */
@@ -314,9 +313,10 @@
 .top-right {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   flex-basis: 600px;
   justify-content: flex-end;
+  margin-right: 20px;
 }
 
 .auth-button {
@@ -331,7 +331,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(5px);
-  margin-right: 30px;
+  margin-right: 0;
+  position: relative;
+  right: 30px;
 }
 
 .auth-button:hover {
