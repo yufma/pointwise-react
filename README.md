@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# PointWise - 포인트 기반 커뮤니티 플랫폼
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 개요
+PointWise는 사용자들이 포인트를 활용하여 정보를 공유하고 소통할 수 있는 커뮤니티 플랫폼입니다. 사용자들은 포인트를 통해 정보를 얻고, 질문하고, 답변하며 커뮤니티를 형성할 수 있습니다.
 
-## Available Scripts
+## 주요 기능
 
-In the project directory, you can run:
+### 1. 커뮤니티 페이지
+- **게시판 시스템**
+  - 카테고리별 게시글 분류
+    - 정보 공유: 유용한 정보와 팁을 공유하는 공간
+    - 질문: 궁금한 점을 물어보고 답변을 받는 공간
+    - 자유: 자유로운 주제로 대화를 나누는 공간
+    - 공지: 중요한 공지사항을 확인하는 공간
+  - 게시글 목록 표시
+    - 제목: 게시글의 주요 내용을 한눈에 파악
+    - 작성자: 게시글 작성자 정보
+    - 날짜: 작성일자 표시
+    - 댓글 수: 게시글의 활성도 확인
+  - 글쓰기 기능 (준비 중)
+    - 마크다운 에디터 지원 예정
+    - 이미지 업로드 기능 예정
+    - 태그 기능 예정
 
-### `npm start`
+### 2. UI/UX 디자인
+- **네비게이션 바**
+  - 상단 고정 메뉴바
+    - 스크롤 시에도 항상 접근 가능
+    - 반투명 효과로 가독성 확보
+  - 메뉴 구성
+    - 홈: 메인 페이지로 이동
+    - 지도: 위치 기반 정보 확인 (개발 예정)
+    - 커뮤니티: 게시판 시스템 접근
+    - 마이페이지: 개인 정보 및 활동 내역
+  - 인터랙션
+    - 호버 시 부드러운 애니메이션
+    - 클릭 시 하단 밑줄 효과
+    - 활성 메뉴 하이라이트
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **로고 디자인**
+  - Josefin Sans 폰트 사용
+    - 모던하고 깔끔한 타이포그래피
+    - 가독성과 심미성 균형
+  - 시각적 효과
+    - 그라데이션 배경으로 깊이감 표현
+    - 텍스트 그림자로 입체감 부여
+    - 호버 시 살짝 커지는 애니메이션
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. 스타일링
+- **반응형 디자인**
+  - 모바일 친화적 레이아웃
+    - 모바일 우선 접근 방식
+    - 터치 인터페이스 최적화
+  - 유동적인 너비 설정
+    - 최소 320px ~ 최대 1440px 지원
+    - 브레이크포인트별 최적화
 
-### `npm test`
+- **시각적 효과**
+  - 그라데이션 배경
+    - 부드러운 색상 전환
+    - 깊이감 있는 디자인
+  - 인터랙션
+    - 호버 애니메이션
+    - 클릭 피드백
+    - 스크롤 효과
+  - 시각적 요소
+    - 그림자 효과로 입체감
+    - 블러 효과로 모던한 느낌
+    - 부드러운 트랜지션
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 기술 스택
+- **프론트엔드**
+  - React: 컴포넌트 기반 UI 개발
+  - TypeScript: 타입 안정성 확보
+  - CSS Modules: 스타일 격리 및 모듈화
+  - React Router: SPA 라우팅 구현
 
-### `npm run build`
+## 디자인 시스템
+- **타이포그래피**
+  - 주요 폰트: Josefin Sans
+    - 제목: 36px, Bold
+    - 부제목: 24px, Medium
+    - 본문: 18px, Regular
+    - 작은 텍스트: 14px, Light
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **색상 팔레트**
+  - 주요 색상
+    - Primary: #1a237e (진한 파랑)
+    - Secondary: #0d47a1 (밝은 파랑)
+  - 배경색
+    - Main: #F8FAFC (밝은 회색)
+    - Card: #FFFFFF (흰색)
+  - 텍스트 색상
+    - Primary: #000000 (검정)
+    - Secondary: #666666 (회색)
+    - Light: #FFFFFF (흰색)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 설치 및 실행
+```bash
+# 저장소 클론
+git clone https://github.com/your-username/pointwise.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 프로젝트 디렉토리로 이동
+cd pointwise
 
-### `npm run eject`
+# 의존성 설치
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 개발 서버 실행
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 개발 환경 설정
+- Node.js 16.x 이상
+- npm 8.x 이상
+- React 18.x
+- TypeScript 4.x
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 향후 개발 계획
+- [ ] 게시글 작성 기능 구현
+  - 마크다운 에디터 통합
+  - 이미지 업로드 기능
+  - 태그 시스템
+- [ ] 댓글 시스템 구현
+  - 실시간 댓글 업데이트
+  - 댓글 좋아요 기능
+  - 대댓글 기능
+- [ ] 사용자 인증 시스템
+  - 소셜 로그인
+  - 이메일 인증
+  - 비밀번호 재설정
+- [ ] 포인트 시스템 구현
+  - 포인트 적립/사용
+  - 포인트 내역 관리
+  - 포인트 랭킹 시스템
+- [ ] 지도 기능 구현
+  - 위치 기반 정보 표시
+  - 지역별 커뮤니티
+  - 실시간 위치 공유

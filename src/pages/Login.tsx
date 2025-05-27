@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -13,13 +13,9 @@ import {
   Alert
 } from '@mui/material';
 import { Visibility, VisibilityOff, Home as HomeIcon } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-interface LoginProps {
-  onLogin: () => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -31,6 +27,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     severity: 'success' as 'success' | 'error'
   });
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // 이전 페이지 정보 저장
+    const previousPath = location.state?.from || '/';
+    localStorage.setItem('previousPath', previousPath);
+  }, [location]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,37 +47,13 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setSnackbar(prev => ({ ...prev, open: false }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      // 로컬 스토리지에서 사용자 목록 가져오기
-      const users = JSON.parse(localStorage.getItem('users') || '[]');
-      
-      // 이메일과 비밀번호로 사용자 찾기
-      const user = users.find((u: any) => 
-        u.email === formData.email && u.password === formData.password
-      );
-
-      if (!user) {
-        throw new Error('이메일 또는 비밀번호가 올바르지 않습니다.');
-      }
-
-      // 로그인 상태 저장
+    // 로컬 개발 환경을 위한 간단한 로그인 처리
+    if (formData.email && formData.password) {
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('currentUser', JSON.stringify({
-        name: user.name,
-        email: user.email
-      }));
-
-      onLogin();
-      navigate('/'); // 메인 화면으로 이동
-    } catch (error) {
-      setSnackbar({
-        open: true,
-        message: error instanceof Error ? error.message : '로그인에 실패했습니다.',
-        severity: 'error'
-      });
+      const previousPath = localStorage.getItem('previousPath') || '/';
+      navigate(previousPath);
     }
   };
 
@@ -107,7 +86,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </Typography>
             <Box sx={{ width: 40 }} /> {/* 균형을 위한 빈 공간 */}
           </Box>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: '100%' }}>
+          <Box component="form" onSubmit={handleLogin} sx={{ mt: 1, width: '100%' }}>
             <TextField
               margin="normal"
               required

@@ -5,6 +5,14 @@ import 'leaflet.awesome-markers';
 import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+// 이미지 import
+import starbucksImage from '../assets/popup_images/스타벅스.png';
+import yukssamImage from '../assets/popup_images/육쌈식당.png';
+import curryImage from '../assets/popup_images/커리야.png';
+import samcheongImage from '../assets/popup_images/삼청당.png';
+import gs25Image from '../assets/popup_images/GS25인하대후문점.png';
+import jjigoImage from '../assets/popup_images/지지고.png';
+
 const MapVisualization: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -45,7 +53,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/pointwise-react/popup_images/스타벅스.png'
+        popupImage: starbucksImage
       },
       {
         position: [37.4519, 126.6547] as L.LatLngExpression,
@@ -56,7 +64,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/pointwise-react/popup_images/육쌈식당.png'
+        popupImage: yukssamImage
       },
       {
         position: [37.4519, 126.6548] as L.LatLngExpression,
@@ -67,7 +75,7 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/pointwise-react/popup_images/커리야.png'
+        popupImage: curryImage
       },
       {
         position: [37.4517, 126.6552] as L.LatLngExpression,
@@ -78,19 +86,84 @@ const MapVisualization: React.FC = () => {
           prefix: 'fa',
           extraClasses: 'fa-rotate-0'
         }),
-        popupImage: '/pointwise-react/popup_images/삼청당.png'
+        popupImage: samcheongImage
+      },
+      {
+        position: [37.4516, 126.6551] as L.LatLngExpression,
+        icon: L.AwesomeMarkers.icon({
+          markerColor: 'green',
+          iconColor: 'white',
+          icon: 'shopping-bag',
+          prefix: 'fa',
+          extraClasses: 'fa-rotate-0'
+        }),
+        popupImage: gs25Image
+      },
+      {
+        position: [37.4518, 126.6549] as L.LatLngExpression,
+        icon: L.AwesomeMarkers.icon({
+          markerColor: 'blue',
+          iconColor: 'white',
+          icon: 'utensils',
+          prefix: 'fa',
+          extraClasses: 'fa-rotate-0'
+        }),
+        popupImage: jjigoImage
       }
     ];
 
     locations.forEach(({ position, icon, popupImage }) => {
       const marker = L.marker(position, { icon }).addTo(map);
-      const popup = L.popup({ maxWidth: 300 });
+      const popup = L.popup({ 
+        maxWidth: 200,
+        maxHeight: 200,
+        autoPan: true,
+        closeButton: true,
+        className: 'custom-popup',
+        autoClose: true
+      });
+      
       const popupContent = document.createElement('div');
-      popupContent.style.width = '100%';
-      popupContent.style.height = '100%';
+      popupContent.style.cssText = `
+        width: 200px;
+        height: 200px;
+        padding: 8px;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+      `;
+      
       const img = document.createElement('img');
       img.src = popupImage;
-      img.width = 300;
+      img.style.cssText = `
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+        display: block;
+        box-sizing: border-box;
+        overflow: hidden;
+      `;
+      
+      // 이미지 로딩 에러 처리
+      img.onerror = () => {
+        const errorDiv = document.createElement('div');
+        errorDiv.style.padding = '20px';
+        errorDiv.style.textAlign = 'center';
+        errorDiv.style.color = '#666';
+        errorDiv.innerHTML = '이미지를 불러올 수 없습니다';
+        popupContent.innerHTML = '';
+        popupContent.appendChild(errorDiv);
+        console.error(`이미지를 불러올 수 없습니다: ${popupImage}`);
+      };
+      
       popupContent.appendChild(img);
       popup.setContent(popupContent);
       marker.bindPopup(popup);

@@ -1,0 +1,126 @@
+.mapPageRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.topBar {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  margin-left: 20px;
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 250px;
+}
+
+.moreIcon {
+  position: relative;
+  width: 53px;
+  height: 53px;
+}
+
+.vector {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.vector:nth-child(1) { left: 0%; top: 41.67%; }
+.vector:nth-child(2) { left: 41.67%; top: 41.67%; }
+.vector:nth-child(3) { left: 83.33%; top: 41.67%; }
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  margin-top: 120px; /* 네비게이션 바 높이 + 상단바 높이 */
+}
+
+.leftPanel {
+  width: 300px;
+  background-color: white;
+  padding: 1.5rem;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  height: calc(100vh - 120px); /* 전체 높이에서 네비게이션 바와 상단바 높이를 뺌 */
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem !important;
+  color: #333;
+  font-weight: 600 !important;
+}
+
+.searchInput {
+  margin-bottom: 1rem;
+}
+
+.selectInput {
+  margin-bottom: 1rem;
+}
+
+.slider {
+  margin: 1rem 0;
+}
+
+.levelLabels {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.mapArea {
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 120px); /* 전체 높이에서 네비게이션 바와 상단바 높이를 뺌 */
+}
+
+.analysisSection {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.analysisContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.analysisContent > * {
+  margin: 0;
+} 

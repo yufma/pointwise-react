@@ -1,51 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MapVisualization from './components/MapVisualization';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import Community from './pages/Community';
+import MyPage from './pages/MyPage';
+import MapPage from './pages/MapPage';
+import NavigationBar from './components/NavigationBar';
 import './App.css';
 
-function AppContent() {
+function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('isLoggedIn');
-    setIsLoggedIn(loginStatus === 'true');
-  }, []);
+    // 로컬 스토리지에서 로그인 상태 확인
+    const checkLoginStatus = () => {
+      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      setIsLoggedIn(loggedIn);
+    };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('currentUser');
-    setIsLoggedIn(false);
-    navigate('/');
-  };
+    checkLoginStatus();
+  }, []);
 
   return (
     <div className="main-container">
       <div className="top-bar">
         <div className="logo">PointWise</div>
         <div className="top-right">
-          {isLoggedIn ? (
-            <button className="auth-button" onClick={handleLogout}>로그아웃</button>
-          ) : (
-            <button className="auth-button" onClick={() => navigate('/login')}>로그인</button>
-          )}
-          <div className="more-icon">
-            <div className="vector"></div>
-            <div className="vector"></div>
-            <div className="vector"></div>
-          </div>
         </div>
       </div>
-      
-      <div className="nav-bar">
-        <div className="nav-item">홈</div>
-        <div className="nav-item">지도</div>
-        <div className="nav-item">커뮤니티</div>
-        <div className="nav-item">마이페이지</div>
-      </div>
-
+      <NavigationBar currentPage="home" />
       <div className="main-content">
         <div className="left-panel">
           <div className="section-title">검색</div>
@@ -80,12 +64,26 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login onLogin={() => {}} />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<AppContent />} />
-      </Routes>
+    <Router basename="/pointwise-react">
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route 
+            path="/mypage" 
+            element={
+              localStorage.getItem('isLoggedIn') === 'true' ? (
+                <MyPage />
+              ) : (
+                <Navigate to="/login" state={{ from: '/mypage' }} replace />
+              )
+            } 
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }
