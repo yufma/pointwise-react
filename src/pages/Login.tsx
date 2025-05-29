@@ -29,12 +29,6 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    // 이전 페이지 정보 저장
-    const previousPath = location.state?.from || '/';
-    localStorage.setItem('previousPath', previousPath);
-  }, [location]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -70,8 +64,8 @@ const Login: React.FC = () => {
         
         // 이전 페이지로 리다이렉트
         setTimeout(() => {
-          const previousPath = localStorage.getItem('previousPath') || '/';
-          navigate(previousPath);
+          const from = location.state?.from || '/';
+          navigate(from);
         }, 1000);
       } else {
         setSnackbar({
