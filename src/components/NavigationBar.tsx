@@ -22,6 +22,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ currentPage }) => {
     navigate('/');
   };
 
+  const handleMypageClick = () => {
+    if (isLoggedIn) {
+      navigate('/mypage');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className={styles.navBar}>
       <div className={styles.navLeft}>
@@ -45,7 +53,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ currentPage }) => {
         </div>
         <div 
           className={`${styles.navItem} ${currentPage === 'mypage' ? styles.active : ''}`} 
-          onClick={() => navigate('/mypage')}
+          onClick={handleMypageClick}
         >
           마이페이지
         </div>

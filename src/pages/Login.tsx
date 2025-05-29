@@ -51,9 +51,35 @@ const Login: React.FC = () => {
     e.preventDefault();
     // 로컬 개발 환경을 위한 간단한 로그인 처리
     if (formData.email && formData.password) {
-      localStorage.setItem('isLoggedIn', 'true');
-      const previousPath = localStorage.getItem('previousPath') || '/';
-      navigate(previousPath);
+      // 사용자 정보 가져오기
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find((u: any) => u.email === formData.email && u.password === formData.password);
+      
+      if (user) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('currentUser', JSON.stringify({
+          name: user.name,
+          email: user.email
+        }));
+        
+        setSnackbar({
+          open: true,
+          message: '로그인 성공!',
+          severity: 'success'
+        });
+        
+        // 이전 페이지로 리다이렉트
+        setTimeout(() => {
+          const previousPath = localStorage.getItem('previousPath') || '/';
+          navigate(previousPath);
+        }, 1000);
+      } else {
+        setSnackbar({
+          open: true,
+          message: '이메일 또는 비밀번호가 올바르지 않습니다.',
+          severity: 'error'
+        });
+      }
     }
   };
 
