@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import styles from './Community.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,12 @@ import { useNavigate } from 'react-router-dom';
 const categories = ['정보 공유', '질문', '자유', '공지'];
 
 const dummyPosts = [
-  { id: 1, title: '첫 번째 게시글', author: '관리자', date: '2024-05-18', comments: 2 },
-  { id: 2, title: '두 번째 게시글', author: '홍길동', date: '2024-05-17', comments: 5 },
+  { id: 1, title: '첫 번째 게시글', author: '관리자', date: '2024-05-18', comments: 2, category: '공지' },
+  { id: 2, title: '두 번째 게시글', author: '홍길동', date: '2024-05-17', comments: 5, category: '정보 공유' },
+  { id: 3, title: '질문 있습니다', author: '김철수', date: '2024-05-16', comments: 1, category: '질문' },
+  { id: 4, title: '자유롭게 이야기해요', author: '이영희', date: '2024-05-15', comments: 0, category: '자유' },
+  { id: 5, title: '공지사항입니다', author: '관리자', date: '2024-05-14', comments: 3, category: '공지' },
+  { id: 6, title: '정보 공유합니다', author: '박민수', date: '2024-05-13', comments: 2, category: '정보 공유' },
 ];
 
 const popularPosts = [
@@ -18,6 +22,7 @@ const popularPosts = [
 
 const Community: React.FC = () => {
   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<string>('정보 공유');
 
   const handleLogout = () => {
     // 로그아웃 처리 로직
@@ -36,9 +41,17 @@ const Community: React.FC = () => {
         <div className={styles.communityMain}>
           {/* 좌측 카테고리 */}
           <aside className={styles.categoryPanel}>
-            <div className={styles.categoryTitle}>카테고리</div>
+            <div className={styles.categoryTitle}>커뮤니티</div>
             {categories.map(cat => (
-              <div className={styles.categoryBox} key={cat}>{cat}</div>
+              <div 
+                className={
+                  styles.categoryBox + (selectedCategory === cat ? ' ' + styles.active : '')
+                }
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat}
+              </div>
             ))}
           </aside>
           {/* 게시글 리스트 */}
@@ -57,7 +70,7 @@ const Community: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {dummyPosts.map(post => (
+                {dummyPosts.filter(post => post.category === selectedCategory).map(post => (
                   <tr key={post.id} className={styles.boardRow}>
                     <td>{post.title}</td>
                     <td>{post.author}</td>
